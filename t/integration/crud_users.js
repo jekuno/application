@@ -48,7 +48,7 @@ describe('CRUD for users', function(){
 
   it('Create new company', function(done){
     register_new_user_func({
-        application_host : application_host,
+      application_host : application_host,
     })
     .then(function(data){
       driver = data.driver;
@@ -132,7 +132,7 @@ describe('CRUD for users', function(){
     });
   });
 
-  it("And update its bose to be MANAGER", function(done){
+  it("And update its boss to be MANAGER", function(done){
      submit_form_func({
       driver      : driver,
       form_params : [{
@@ -338,9 +338,9 @@ describe('CRUD for users', function(){
       });
   });
 
-  it("Open ADMIN user details page", function(done){
+  it("Open ADMIN user details page (absences)", function(done){
     open_page_func({
-      url    : application_host + 'users/edit/'+admin_user_id+'/',
+      url    : application_host + 'users/edit/'+admin_user_id+'/absences/',
       driver : driver,
     })
     .then(function(){ done() });
@@ -369,6 +369,14 @@ describe('CRUD for users', function(){
       submit_button_selector : 'button#save_changes_btn',
       should_be_successful : true,
       message : /Details for .+ were updated/,
+    })
+    .then(function(){ done() });
+  });
+
+  it("Open ADMIN user details page (general)", function(done){
+    open_page_func({
+      url    : application_host + 'users/edit/'+admin_user_id+'/',
+      driver : driver,
     })
     .then(function(){ done() });
   });

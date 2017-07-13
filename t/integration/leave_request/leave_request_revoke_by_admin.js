@@ -8,15 +8,15 @@ var test             = require('selenium-webdriver/testing'),
     Promise          = require("bluebird"),
     moment           = require('moment'),
     until            = require('selenium-webdriver').until,
-    login_user_func        = require('../lib/login_with_user'),
-    register_new_user_func = require('../lib/register_new_user'),
-    logout_user_func       = require('../lib/logout_user'),
-    open_page_func         = require('../lib/open_page'),
-    submit_form_func       = require('../lib/submit_form'),
-    check_elements_func    = require('../lib/check_elements'),
-    check_booking_func     = require('../lib/check_booking_on_calendar'),
-    add_new_user_func      = require('../lib/add_new_user'),
-    config                 = require('../lib/config'),
+    login_user_func        = require('../../lib/login_with_user'),
+    register_new_user_func = require('../../lib/register_new_user'),
+    logout_user_func       = require('../../lib/logout_user'),
+    open_page_func         = require('../../lib/open_page'),
+    submit_form_func       = require('../../lib/submit_form'),
+    check_elements_func    = require('../../lib/check_elements'),
+    check_booking_func     = require('../../lib/check_booking_on_calendar'),
+    add_new_user_func      = require('../../lib/add_new_user'),
+    config                 = require('../../lib/config'),
     application_host       = config.get_application_host();
 
 /*
@@ -205,7 +205,7 @@ describe('Revoke leave request by Admin', function(){
 
   it("Open user editing page for Employee", function(done){
     open_page_func({
-      url    : application_host + 'users/edit/'+employee_user_id+'/',
+      url    : application_host + 'users/edit/'+employee_user_id+'/absences/',
       driver : driver,
     })
     .then(function(){ done() });

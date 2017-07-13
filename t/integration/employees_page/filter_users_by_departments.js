@@ -7,15 +7,15 @@ var test                 = require('selenium-webdriver/testing'),
   expect                 = require('chai').expect,
   Promise                = require("bluebird"),
   until                  = require('selenium-webdriver').until,
-  register_new_user_func = require('../lib/register_new_user'),
-  login_user_func        = require('../lib/login_with_user'),
-  open_page_func         = require('../lib/open_page'),
-  submit_form_func       = require('../lib/submit_form'),
-  check_elements_func    = require('../lib/check_elements'),
-  add_new_user_func      = require('../lib/add_new_user'),
+  register_new_user_func = require('../../lib/register_new_user'),
+  login_user_func        = require('../../lib/login_with_user'),
+  open_page_func         = require('../../lib/open_page'),
+  submit_form_func       = require('../../lib/submit_form'),
+  check_elements_func    = require('../../lib/check_elements'),
+  add_new_user_func      = require('../../lib/add_new_user'),
   By                     = require('selenium-webdriver').By,
   new_department_form_id = '#add_new_department_form',
-  config                 = require('../lib/config'),
+  config                 = require('../../lib/config'),
   application_host       = config.get_application_host();
 
 /*
@@ -113,7 +113,7 @@ describe('Check filtering on "users" page', function(){
     driver
       // Departments are ordered by names so we are sure that first item
       // after general link "All" is going to be "IT"
-      .findElement( By.css('table.all-departments tbody tr:nth-child(2) a') )
+      .findElement( By.css('div.all-departments a:nth-child(2)') )
       .then(function(element){
         element.click();
         return driver.wait(until.elementLocated(By.css('h1')), 1000);
@@ -138,7 +138,7 @@ describe('Check filtering on "users" page', function(){
    driver
      // Departments are ordered by names so we are sure that second item
      // after general link "All" is going to be "Sales"
-     .findElement( By.css('table.all-departments tbody tr:nth-child(3) a') )
+     .findElement( By.css('div.all-departments a:nth-child(3)') )
      .then(function(element){
        element.click();
        return driver.wait(until.elementLocated(By.css('h1')), 1000);
@@ -161,7 +161,7 @@ describe('Check filtering on "users" page', function(){
 
   it('Click on "All" filter', function(done){
     driver
-      .findElement( By.css('table.all-departments tbody tr:nth-child(1) a') )
+      .findElement( By.css('div.all-departments a:nth-child(1)') )
       .then(function(element){
         element.click();
         return driver.wait(until.elementLocated(By.css('h1')), 1000);
